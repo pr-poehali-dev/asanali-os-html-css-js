@@ -4,98 +4,534 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
+
+    /* AsanaliOS tokens */
+    --aos-accent: #0ea5e9;
+    --aos-accent-rgb: 14, 165, 233;
+    --aos-glass: rgba(255, 255, 255, 0.06);
+    --aos-glass-border: rgba(255, 255, 255, 0.12);
+    --aos-glass-hover: rgba(255, 255, 255, 0.1);
+    --aos-taskbar: rgba(10, 12, 20, 0.82);
+    --aos-window-bg: rgba(18, 22, 36, 0.96);
+    --aos-window-header: rgba(255, 255, 255, 0.05);
+    --aos-text: #e8eaf6;
+    --aos-text-muted: #7986cb;
+    --aos-shadow:
+      0 32px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --aos-radius: 14px;
+    --aos-anim: 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
-
   body {
     @apply bg-background text-foreground;
+    font-family: "Golos Text", system-ui, sans-serif;
+    overflow: hidden;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
   }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  input,
+  textarea {
+    user-select: text;
+  }
+}
+
+/* ─── GLASSMORPHISM ─── */
+.glass {
+  background: var(--aos-glass);
+  border: 1px solid var(--aos-glass-border);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+}
+
+.glass-dark {
+  background: rgba(8, 10, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(32px) saturate(2);
+  -webkit-backdrop-filter: blur(32px) saturate(2);
+}
+
+/* ─── TASKBAR ─── */
+.aos-taskbar {
+  background: var(--aos-taskbar);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(40px) saturate(2);
+  -webkit-backdrop-filter: blur(40px) saturate(2);
+}
+
+/* ─── WINDOW ─── */
+.aos-window {
+  background: var(--aos-window-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--aos-radius);
+  box-shadow: var(--aos-shadow);
+  backdrop-filter: blur(40px) saturate(1.8);
+  -webkit-backdrop-filter: blur(40px) saturate(1.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.aos-window.focused {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    var(--aos-shadow),
+    0 0 0 1px rgba(var(--aos-accent-rgb), 0.3);
+}
+
+.aos-window.minimizing {
+  animation: windowMinimize 0.2s ease forwards;
+}
+
+.aos-window.opening {
+  animation: windowOpen var(--aos-anim) both;
+}
+
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes windowMinimize {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+  }
+}
+
+/* ─── WINDOW HEADER ─── */
+.aos-titlebar {
+  background: var(--aos-window-header);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 12px;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.aos-titlebar.dragging {
+  cursor: grabbing;
+}
+
+/* ─── WIN CONTROL BUTTONS ─── */
+.win-btn {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: transparent;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.win-btn:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+.win-btn-close {
+  background: #ff5f57;
+}
+.win-btn-min {
+  background: #febc2e;
+}
+.win-btn-max {
+  background: #28c840;
+}
+
+/* ─── START MENU ─── */
+.aos-start-menu {
+  background: rgba(14, 18, 32, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(48px) saturate(2.2);
+  -webkit-backdrop-filter: blur(48px) saturate(2.2);
+  border-radius: 18px;
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  animation: startMenuOpen 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes startMenuOpen {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─── CONTEXT MENU ─── */
+.aos-context-menu {
+  background: rgba(20, 24, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  animation: ctxOpen 0.15s ease both;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+@keyframes ctxOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ctx-item {
+  padding: 9px 16px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.1s;
+}
+.ctx-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.ctx-item.danger {
+  color: #ef4444;
+}
+.ctx-separator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 0;
+}
+
+/* ─── TASKBAR ITEM ─── */
+.taskbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 6px;
+  cursor: pointer;
+  position: relative;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+  gap: 6px;
+}
+.taskbar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.taskbar-item.active {
+  background: rgba(255, 255, 255, 0.14);
+}
+.taskbar-item-dot {
+  position: absolute;
+  bottom: 2px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--aos-accent);
+}
+
+/* ─── DESKTOP ICON ─── */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 80px;
+  transition: background 0.15s;
+}
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.desktop-icon.selected {
+  background: rgba(var(--aos-accent-rgb), 0.25);
+}
+.desktop-icon-label {
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  max-width: 72px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+/* ─── ACRYLIC / MICA EFFECTS ─── */
+.mica {
+  background: rgba(15, 18, 32, 0.7);
+  backdrop-filter: blur(60px) brightness(0.8) saturate(1.5);
+  -webkit-backdrop-filter: blur(60px) brightness(0.8) saturate(1.5);
+}
+
+/* ─── SETTINGS SIDEBAR ─── */
+.settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.15s;
+}
+.settings-nav-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+.settings-nav-item.active {
+  background: rgba(var(--aos-accent-rgb), 0.18);
+  color: var(--aos-accent);
+}
+
+/* ─── SLIDER ─── */
+input[type="range"] {
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+  height: 4px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--aos-accent);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(var(--aos-accent-rgb), 0.6);
+}
+
+/* ─── BUTTON ─── */
+.aos-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.aos-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+.aos-btn-accent {
+  background: var(--aos-accent);
+  border-color: transparent;
+  color: #fff;
+}
+.aos-btn-accent:hover {
+  filter: brightness(1.1);
+}
+
+/* ─── EXPLORER ─── */
+.explorer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.12s;
+}
+.explorer-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+.explorer-item.selected {
+  background: rgba(var(--aos-accent-rgb), 0.2);
+  color: #fff;
+}
+
+/* ─── TOAST NOTIFICATION ─── */
+.aos-toast {
+  background: rgba(20, 24, 40, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  animation: toastIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── PAINT CANVAS ─── */
+#paint-canvas {
+  cursor: crosshair;
+  display: block;
+}
+
+/* ─── CALCULATOR ─── */
+.calc-btn {
+  border-radius: 12px;
+  border: none;
+  font-size: 18px;
+  font-family: "Golos Text", sans-serif;
+  cursor: pointer;
+  transition: all 0.12s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+.calc-btn:hover {
+  filter: brightness(1.15);
+  transform: scale(0.97);
+}
+.calc-btn:active {
+  transform: scale(0.92);
+}
+
+/* ─── WALLPAPERS ─── */
+.wallpaper-aurora {
+  background: linear-gradient(
+    135deg,
+    #0a0e1a 0%,
+    #0d1b3e 30%,
+    #0a1628 50%,
+    #091420 70%,
+    #060a12 100%
+  );
+}
+.wallpaper-aurora::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 20% 30%,
+      rgba(56, 189, 248, 0.12) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 80% at 80% 60%,
+      rgba(168, 85, 247, 0.1) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 50% 80%,
+      rgba(14, 165, 233, 0.08) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+}
+
+.wallpaper-sunset {
+  background: linear-gradient(160deg, #0f0c29, #302b63, #24243e);
+}
+
+.wallpaper-forest {
+  background: linear-gradient(160deg, #0a1628, #0d2b1f, #091a12);
+}
+
+.wallpaper-ocean {
+  background: linear-gradient(160deg, #000428, #004e92);
+}
+
+.wallpaper-minimal {
+  background: #0d0f1a;
+}
+
+/* ─── NOTIFICATION CENTER ─── */
+.notif-panel {
+  background: rgba(12, 15, 28, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(40px);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+  animation: notifOpen 0.2s ease both;
+}
+@keyframes notifOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ─── TYPOGRAPHY ─── */
+.aos-mono {
+  font-family: "IBM Plex Mono", monospace;
 }
